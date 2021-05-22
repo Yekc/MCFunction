@@ -1,6 +1,22 @@
 import os
+import shutil
+
+#add new lists to class:
+#setattr(commands, name, value)
+class commands:
+	def add(self, attr, val):
+		setattr(self, attr, val)
+
+	tick = []
+	load = []
+
+functions = [attr for attr in vars(commands) if not attr.startswith("__") and not attr.startswith("add")]
+
 
 def create(path="", namespace="datapack", description="Datapack", pack_format="6"):
+	if os.path.isdir(path + "/" + namespace):
+		shutil.rmtree(path + "/" + namespace)
+
 	os.mkdir(path + "/" + namespace)
 	os.mkdir(path + "/" + namespace + "/data")
 
@@ -37,6 +53,13 @@ def create(path="", namespace="datapack", description="Datapack", pack_format="6
 
 	os.mkdir(path + "/" + namespace + "/data/" + namespace + "/functions")
 	
+	for i in functions:
+		f = open(path + "/" + namespace + "/data/" + namespace + "/functions/" + i + ".mcfunction", "w")
+		f.write("")
+		f.close()
+		f = open(path + "/" + namespace + "/data/" + namespace + "/functions/" + i + ".mcfunction", "a+")
+		#print(i)
+		exec("for j in commands." + i + ":\n\tf.write(j + \"\\n\")")
 
-	#--------------------------------------------------------------------------------------------------------------------------
 
+#---------------------------------------------------------------------------------------------------------------------------

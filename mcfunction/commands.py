@@ -1,512 +1,257 @@
 import mcfunction.decorators as d
-
-commandstick = []
-commandsload = []
-commandssay = []
-commandsnewscore = []
-commandsremovescore = []
-commandssetscore = []
-commandssetdisplayscore = []
-commandsaddscore = []
-commandssubscore = []
-commandstriggerenable = []
-commandsgive = []
-commandsclear = []
-commandstp = []
-commandsgamemode = []
-commandsnewteam = []
-commandsjointeam = []
-commandsmodifyteam = []
-commandsremoveteam = []
+import mcfunction.project as p
 
 #/say
-def say(text=""):
-	global commands
+def say(function="", text=""):
+
 	if d.tick == True:
-		print("tick") 
-
-		commandstick.append("say " + text)
-
+		p.commands.tick.append("say " + text) 
 		d.tick = False
 
 	elif d.load == True:
-		print("load") 
-
-		commandsload.append("say " + text)
-
+		p.commands.load.append("say " + text)
 		d.load = False
-
-	elif d.function == True:
-		print("function") 
-
-		commandssay.append("say " + text)
-
-		d.function = False
 
 	else:
-		print("neither")
-
-		commands.append("say " + text)
-
+		exec("p.commands.add(p.commands, \"" + function + "\", \"[\\\"" + "say " + text + "\\\"]\")")
 		d.tick = False
 		d.load = False
-		d.function = False
+		
 
 #/scoreboard objectives add
-def new_score(name="", type="dummy", displayname=""):
-	global commands
+def new_score(function="", name="", type="dummy", displayname=""):
+	
 	if d.tick == True:
-		print("tick") 
-
-		commands.append("scoreboard objectives add " + name + " " + type + " " + displayname)
-
+		p.commands.tick.append("")
 		d.tick = False
 
 	elif d.load == True:
-		print("load") 
-
-		commands.append("scoreboard objectives add " + name + " " + type + " " + displayname)
-
+		p.commands.load.append("") 
 		d.load = False
-
-	elif d.function == True:
-		print("function") 
-
-		commands.append("scoreboard objectives add " + name + " " + type + " " + displayname)
-
-		d.function = False
 
 	else:
-		print("neither")
-
-		commands.append("scoreboard objectives add " + name + " " + type + " " + displayname)
-
+		exec("p.commands.add(p.commands, \"" + function + "\", \"[\\\"" + "PUT COMMAND HERE" + "\\\"]\")")
 		d.tick = False
 		d.load = False
-		d.function = False
-
-#/scoreboard objectives remove
-def remove_score(score_name=""):
-	global commands
-	if d.tick == True:
-		print("tick") 
-
-		commands.append("scoreboard objectives remove " + score_name)
-
-		d.tick = False
-
-	elif d.load == True:
-		print("load") 
-
-		commands.append("scoreboard objectives remove " + score_name)
-
-		d.load = False
-
-	elif d.function == True:
-		print("function") 
-
-		commands.append("scoreboard objectives remove " + score_name)
 		
-		d.function = False
-
-	else:
-		print("neither")
-
-		commands.append("scoreboard objectives remove " + score_name)
-		
-		d.tick = False
-		d.load = False
-		d.function = False
 
 #/scoreboard players set
-def set_score(target="", score_name="", value=""):
-	global commands
+def set_score(function="", target="", score_name="", value=""):
+	
 	if d.tick == True:
-		print("tick") 
-
-		commands.append("scoreboard players set " + target + " " + score_name + " " + value)
-
+		p.commands.tick.append("") 
 		d.tick = False
 
 	elif d.load == True:
-		print("load") 
-
-		commands.append("scoreboard players set " + target + " " + score_name + " " + value)
-
+		p.commands.load.append("") 
 		d.load = False
-
-	elif d.function == True:
-		print("function") 
-
-		commands.append("scoreboard players set " + target + " " + score_name + " " + value)
-
-		d.function = False
 
 	else:
-		print("neither")
-
-		commands.append("scoreboard players set " + target + " " + score_name + " " + value)
-
+		exec("p.commands.add(p.commands, \"" + function + "\", \"[\\\"" + "PUT COMMAND HERE" + "\\\"]\")")
 		d.tick = False
 		d.load = False
-		d.function = False
+		
 
 #/scoreboard objectives setdisplay
-def setdisplay_score(display="", score_name=""):
-	global commands
+def setdisplay_score(function="", display="", score_name=""):
+	
 	if d.tick == True:
-		print("tick") 
-
-		commands.append("scoreboard objectives setdisplay " + display + " " + score_name)
-
+		p.commands.tick.append("") 
 		d.tick = False
 
 	elif d.load == True:
-		print("load") 
-
-		commands.append("scoreboard objectives setdisplay " + display + " " + score_name)
-
+		p.commands.load.append("") 
 		d.load = False
-
-	elif d.function == True:
-		print("function") 
-
-		commands.append("scoreboard objectives setdisplay " + display + " " + score_name)
-
-		d.function = False
 
 	else:
-		print("neither")
-
-		commands.append("scoreboard objectives setdisplay " + display + " " + score_name)
-
+		exec("p.commands.add(p.commands, \"" + function + "\", \"[\\\"" + "PUT COMMAND HERE" + "\\\"]\")")
 		d.tick = False
 		d.load = False
-		d.function = False
+		
 
 #/scoreboard players add
-def add_score(target="", score_name="", amount="1"):
-	global commands
+def add_score(function="", target="", score_name="", amount="1"):
+	
 	if d.tick == True:
-		print("tick") 
-
-		commands.append("scoreboard players add " + target + " " + score_name + " " + amount)
-
+		p.commands.tick.append("") 
 		d.tick = False
 
 	elif d.load == True:
-		print("load") 
-
-		commands.append("scoreboard players add " + target + " " + score_name + " " + amount)
-
+		p.commands.load.append("") 
 		d.load = False
-
-	elif d.function == True:
-		print("function") 
-
-		commands.append("scoreboard players add " + target + " " + score_name + " " + amount)
-
-		d.function = False
 
 	else:
-		print("neither")
-
-		commands.append("scoreboard players add " + target + " " + score_name + " " + amount)
-
+		exec("p.commands.add(p.commands, \"" + function + "\", \"[\\\"" + "PUT COMMAND HERE" + "\\\"]\")")
 		d.tick = False
 		d.load = False
-		d.function = False
+		
 
 #/scoreboard players remove
-def sub_score(target="", score_name="", amount="1"):
-	global commands
+def sub_score(function="", target="", score_name="", amount="1"):
+	
 	if d.tick == True:
-		print("tick") 
-
-		commands.append("scoreboard players remove " + target + " " + score_name + " " + amount)
-
+		p.commands.tick.append("") 
 		d.tick = False
 
 	elif d.load == True:
-		print("load") 
-
-		commands.append("scoreboard players remove " + target + " " + score_name + " " + amount)
-
+		p.commands.load.append("") 
 		d.load = False
-
-	elif d.function == True:
-		print("function") 
-
-		commands.append("scoreboard players remove " + target + " " + score_name + " " + amount)
-
-		d.function = False
 
 	else:
-		print("neither")
-
-		commands.append("scoreboard players remove " + target + " " + score_name + " " + amount)
-
+		exec("p.commands.add(p.commands, \"" + function + "\", \"[\\\"" + "PUT COMMAND HERE" + "\\\"]\")")
 		d.tick = False
 		d.load = False
-		d.function = False
+		
 
 #/scoreboard players enable 
-def trigger_enable(target="", score_name=""):
-	global commands
+def trigger_enable(function="", target="", score_name=""):
+	
 	if d.tick == True:
-		print("tick") 
-
-		commands.append("scoreboard players enable " + target + " " + score_name)
-
+		p.commands.tick.append("") 
 		d.tick = False
 
 	elif d.load == True:
-		print("load") 
-
-		commands.append("scoreboard players enable " + target + " " + score_name)
-
+		p.commands.load.append("") 
 		d.load = False
-
-	elif d.function == True:
-		print("function") 
-
-		commands.append("scoreboard players enable " + target + " " + score_name)
-
-		d.function = False
 
 	else:
-		print("neither")
-
-		commands.append("scoreboard players enable " + target + " " + score_name)
-
+		exec("p.commands.add(p.commands, \"" + function + "\", \"[\\\"" + "PUT COMMAND HERE" + "\\\"]\")")
 		d.tick = False
 		d.load = False
-		d.function = False
+		
 
 #/give
-def give(target="", item="", nbt="", amount="1"):
-	global commands
+def give(function="", target="", item="", nbt="none"):
+	
 	if d.tick == True:
-		print("tick") 
-
-		commands.append("give " + target + " " + item + "{" + nbt + "}" + " " + amount)
-
+		p.commands.tick.append("") 
 		d.tick = False
 
 	elif d.load == True:
-		print("load") 
-
-		commands.append("give " + target + " " + item + "{" + nbt + "}" + " " + amount)
-
+		p.commands.load.append("") 
 		d.load = False
-
-	elif d.function == True:
-		print("function") 
-
-		commands.append("give " + target + " " + item + "{" + nbt + "}" + " " + amount)
-
-		d.function = False
 
 	else:
-		print("neither")
-
-		commands.append("give " + target + " " + item + "{" + nbt + "}" + " " + amount)
-
+		exec("p.commands.add(p.commands, \"" + function + "\", \"[\\\"" + "PUT COMMAND HERE" + "\\\"]\")")
 		d.tick = False
 		d.load = False
-		d.function = False
+		
 
 #/clear
-def clear(target="", item="", nbt="", maxcount=""):
-	global commands
+def clear(function="", target="", item="none", maxcount="none"):
+	
 	if d.tick == True:
-		print("tick") 
-
-		commands.append("clear " + target + " " + item + "{" + nbt + "} " + maxcount)
-
+		p.commands.tick.append("") 
 		d.tick = False
 
 	elif d.load == True:
-		print("load") 
-
-		commands.append("clear " + target + " " + item + "{" + nbt + "} " + maxcount)
-
+		p.commands.load.append("") 
 		d.load = False
-
-	elif d.function == True:
-		print("function") 
-
-		commands.append("clear " + target + " " + item + "{" + nbt + "} " + maxcount)
-
-		d.function = False
 
 	else:
-		print("neither")
-
-		commands.append("clear " + target + " " + item + "{" + nbt + "} " + maxcount)
-
+		exec("p.commands.add(p.commands, \"" + function + "\", \"[\\\"" + "PUT COMMAND HERE" + "\\\"]\")")
 		d.tick = False
 		d.load = False
-		d.function = False
+		
 
 #/tp
-def tp(target="", location=""):
-	global commands
+def tp(function="", target="", location="none", toplayer="none"):
+	
 	if d.tick == True:
-		print("tick") 
-
-		commands.append("tp " + target + " " + location)
-
+		p.commands.tick.append("") 
 		d.tick = False
 
 	elif d.load == True:
-		print("load") 
-
-		commands.append("tp " + target + " " + location)
-
+		p.commands.load.append("") 
 		d.load = False
-
-	elif d.function == True:
-		print("function") 
-
-		commands.append("tp " + target + " " + location)
-
-		d.function = False
 
 	else:
-		print("neither")
-
-		commands.append("tp " + target + " " + location)
-
+		exec("p.commands.add(p.commands, \"" + function + "\", \"[\\\"" + "PUT COMMAND HERE" + "\\\"]\")")
 		d.tick = False
 		d.load = False
-		d.function = False
+		
 
 #/gamemode
-def gamemode(target="", gamemode=""):
-	global commands
+def gamemode(function="", target="", gamemode=""):
+	
 	if d.tick == True:
-		print("tick") 
-
-		commands.append("gamemode " + gamemode + " " + target)
-
+		p.commands.tick.append("") 
 		d.tick = False
 
 	elif d.load == True:
-		print("load") 
-
-		commands.append("gamemode " + gamemode + " " + target)
-
+		p.commands.load.append("") 
 		d.load = False
-
-	elif d.function == True:
-		print("function") 
-
-		commands.append("gamemode " + gamemode + " " + target)
-
-		d.function = False
 
 	else:
-		print("neither")
-
-		commands.append("gamemode " + gamemode + " " + target)
-
+		exec("p.commands.add(p.commands, \"" + function + "\", \"[\\\"" + "PUT COMMAND HERE" + "\\\"]\")")
 		d.tick = False
 		d.load = False
-		d.function = False
+		
 
 #/team add
-def new_team(name="", displayname=""):
-	global commands
+def new_team(function="", name="", displayname="none"):
+	
 	if d.tick == True:
-		print("tick") 
-
-		commands.append("team add " + name + " " + displayname)
-
+		p.commands.tick.append("") 
 		d.tick = False
 
 	elif d.load == True:
-		print("load") 
-
-		commands.append("team add " + name + " " + displayname)
-
+		p.commands.load.append("") 
 		d.load = False
-
-	elif d.function == True:
-		print("function") 
-
-		commands.append("team add " + name + " " + displayname)
-
-		d.function = False
 
 	else:
-		print("neither")
-
-		commands.append("team add " + name + " " + displayname)
-
+		exec("p.commands.add(p.commands, \"" + function + "\", \"[\\\"" + "PUT COMMAND HERE" + "\\\"]\")")
 		d.tick = False
 		d.load = False
-		d.function = False
+		
 
 #/team join
-def join_team(target="", team_name=""):
-	global commands
+def join_team(function="", target="", team_name=""):
+	
 	if d.tick == True:
-		print("tick") 
+		p.commands.tick.append("") 
 		d.tick = False
 
 	elif d.load == True:
-		print("load") 
+		p.commands.load.append("") 
 		d.load = False
-
-	elif d.function == True:
-		print("function") 
-		d.function = False
 
 	else:
-		print("neither")
+		exec("p.commands.add(p.commands, \"" + function + "\", \"[\\\"" + "PUT COMMAND HERE" + "\\\"]\")")
 		d.tick = False
 		d.load = False
-		d.function = False
+		
 
 #/team modify
-def modify_team(team_name="", option="", option_value=""):
-	global commands
+def modify_team(function="", team_name="", option="", option_value=""):
+	
 	if d.tick == True:
-		print("tick") 
+		p.commands.tick.append("") 
 		d.tick = False
 
 	elif d.load == True:
-		print("load") 
+		p.commands.load.append("") 
 		d.load = False
-
-	elif d.function == True:
-		print("function") 
-		d.function = False
 
 	else:
-		print("neither")
+		exec("p.commands.add(p.commands, \"" + function + "\", \"[\\\"" + "PUT COMMAND HERE" + "\\\"]\")")
 		d.tick = False
 		d.load = False
-		d.function = False
+		
 
 #/team remove
-def remove_team(team_name=""):
-	global commands
+def remove_team(function="", team_name=""):
+	
 	if d.tick == True:
-		print("tick") 
+		p.commands.tick.append("") 
 		d.tick = False
 
 	elif d.load == True:
-		print("load") 
+		p.commands.load.append("") 
 		d.load = False
-
-	elif d.function == True:
-		print("function") 
-		d.function = False
 
 	else:
-		print("neither")
+		exec("p.commands.add(p.commands, \"" + function + "\", \"[\\\"" + "PUT COMMAND HERE" + "\\\"]\")")
 		d.tick = False
 		d.load = False
-		d.function = False
+		

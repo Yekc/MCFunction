@@ -1,6 +1,5 @@
 tick = False
 load = False
-function = False
 
 def tick(x):
 	global tick
@@ -10,9 +9,4 @@ def tick(x):
 def load(x):
 	global load
 	load = True
-	x()
-
-def function(x):
-	global function
-	function = True
 	x()
