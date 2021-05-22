@@ -11,5 +11,5 @@ from mcfunction.project import create
 def spamHello():
   say(text="Hello!")
   
-create(path="C:\Users\PC_USER\AppData\Roaming\.minecraft\saves\New World\datapacks", namespace="myDatapack", description="My datapack", pack_format="6")
+create(path="C:/Users/PC_USER/AppData/Roaming/.minecraft/saves/New World/datapacks", namespace="myDatapack", description="My datapack", pack_format="6")
 ```
